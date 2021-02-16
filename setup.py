@@ -45,7 +45,10 @@ class CMakeBuild(build_ext):
             "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={}".format(extdir),
             "-DPYTHON_EXECUTABLE={}".format(sys.executable),
             "-DEXAMPLE_VERSION_INFO={}".format(self.distribution.get_version()),
-            "-DCMAKE_BUILD_TYPE={}".format(cfg),  # not used on MSVC, but no harm
+            "-DCMAKE_BUILD_TYPE={}".format(cfg),  # not used on MSVC, but no harm            
+            '-DCMAKE_INSTALL_RPATH={}'.format('$ORIGIN'),
+            '-DCMAKE_BUILD_WITH_INSTALL_RPATH={}'.format('ON'),
+            '-DCMAKE_INSTALL_RPATH_USE_LINK_PATH={}'.format('OFF')
         ]
         build_args = []
 
